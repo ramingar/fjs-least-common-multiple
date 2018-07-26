@@ -1,0 +1,18 @@
+{
+  "name": "fjs-least-common-multiple",
+  "version": "0.1.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "export BABEL_ENV=test && export NODE_ENV=test &&./node_modules/.bin/babel-tape-runner tests/*.test.js | ./node_modules/.bin/tap-spec"
+  },
+  "author": "Rafael Minguet",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-tape-runner": "^2.0.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  }
+}
