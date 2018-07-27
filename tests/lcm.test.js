@@ -73,9 +73,9 @@ test('------- Least common multiple of 72 y 50', assert => {
 
 test('------- Least common multiple of 12 y 9', assert => {
     // arrange
-    const messageResult  = `Least common multiple of 72 and 50 is '2^3 * 3^2 * 5^2'`;
+    const messageResult  = `Least common multiple of 12 and 9 is '2^3 * 3^2 * 5^2'`;
     const expectedResult = '2^2 * 3^2';
-    const actualResult   = lcm([72, 50]);
+    const actualResult   = lcm([12, 9]);
 
     // act
 
