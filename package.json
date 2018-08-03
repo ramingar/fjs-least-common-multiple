@@ -1,6 +1,6 @@
 {
   "name": "fjs-least-common-multiple",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "",
   "scripts": {
@@ -12,6 +12,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-tape-runner": "^2.0.1",
+    "ramda": "^0.25.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
   }
