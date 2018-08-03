@@ -1,4 +1,5 @@
-import test from 'tape';
+import test from 'tape'
+import R from 'ramda'
 
 // YOUR CODE HERE -----------------------
 
@@ -30,15 +31,14 @@ const groupByFactor = (divisors) => {
 };
 
 const mergeMaxFactor = (mergedFactors, factors) => {
-
     const bases = Object.keys(factors);
 
     const factorsWithHigherExponent = bases.reduce((acc, val) => {
         const exponent = mergedFactors[val] && mergedFactors[val] > factors[val] ? mergedFactors[val] : factors[val];
-        return Object.assign({}, mergedFactors, {[val]: exponent});
+        return Object.assign({}, acc, {[val]: exponent});
     }, {});
 
-    return factorsWithHigherExponent;
+    return Object.assign({}, mergedFactors, factorsWithHigherExponent);
 };
 
 const lcmToString = (factors) => {
@@ -54,12 +54,16 @@ const lcmToString = (factors) => {
 };
 
 const lcm = (numbers) => {
-    const lcmArray = numbers
-        .map(factorize)
-        .map(groupByFactor)
-        .reduce(mergeMaxFactor);
 
-    return lcmToString(lcmArray);
+    const _lcm = R.pipe(
+        R.map(factorize),
+        R.map(groupByFactor),
+        R.reduce(mergeMaxFactor, {}),
+        lcmToString
+    );
+
+    return _lcm(numbers);
+
 };
 
 // TESTS --------------------------------
