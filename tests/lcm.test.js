@@ -3,7 +3,7 @@ import R from 'ramda'
 
 // YOUR CODE HERE -----------------------
 
-const factorize = (number) => {
+const primeFactorization = (number) => {
 
     const getDivisors = (divisor, number, acc) => {
 
@@ -22,15 +22,15 @@ const factorize = (number) => {
     return 0 === number || 1 === number ? [number] : getDivisors(2, number, [])
 };
 
-const groupByFactor = (divisors) => {
-    return divisors
+const primeNumberPowers = (primeNumbers) => {
+    return primeNumbers
         .reduce((acc, val) => {
             const count = acc[val] ? ++acc[val] : 1;
             return Object.assign({}, acc, {[val]: count})
         }, {})
 };
 
-const mergeMaxFactor = (mergedFactors, factors) => {
+const highestPowers = (mergedFactors, factors) => {
     const bases = Object.keys(factors);
 
     const factorsWithHigherExponent = bases.reduce((acc, val) => {
@@ -41,7 +41,7 @@ const mergeMaxFactor = (mergedFactors, factors) => {
     return Object.assign({}, mergedFactors, factorsWithHigherExponent);
 };
 
-const lcmToString = (factors) => {
+const lcmObjectToLcmString = (factors) => {
 
     const bases = Object.keys(factors);
 
@@ -56,10 +56,10 @@ const lcmToString = (factors) => {
 const lcm = (numbers) => {
 
     const _lcm = R.pipe(
-        R.map(factorize),
-        R.map(groupByFactor),
-        R.reduce(mergeMaxFactor, {}),
-        lcmToString
+        R.map(primeFactorization),
+        R.map(primeNumberPowers),
+        R.reduce(highestPowers, {}),
+        lcmObjectToLcmString
     );
 
     return _lcm(numbers);
